@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery-3.7.1.min.js"></script>
+<meta charset="UTF-8">
+<title>Register here</title>
+  <style>
+        input[type = text] {
+    width: 55%;
+    padding: 9px 10px;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+input[type=password]{
+width: 55%;
+    padding: 9px 10px;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+         input[type= submit]{
+             width: 50%;
+             margin-left: 124px;
+   		      height: 36px;
+              font-size: 22px;
+              border: none;
+         }
+         label{
+         margin-left:24px;
+         }
+         
+      </style>
+</head>
+<body>
+<div class= "container" style="width: 50%;
+    position: absolute;
+    left:29%;
+    top:5%;">
+<div class ="card">
+<form action="#" th:object="${employee}" th:action="@{reuested}" id="form" method="post">
+<label style="font-size: 23px;">First name:</label>
+<input th:field="*{first_name}" type="text"   style="margin: 10px;"><br>
+<label style="font-size: 23px;">Middle name:</label>
+<input th:field="*{middle_name}" type="text" style="margin: 10px;"><br>
+<label style="font-size: 23px;">Last name:</label>
+<input th:field="*{last_name}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorLastName}" th:text="${errorLastName}" style="color: red;"></p>
+<label style="font-size: 23px;">Email:</label>
+<input th:field="*{email}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorEmail}" th:text="${errorEmail}" style="color: red;"></p>
+<p th:if="${errorCheck}" th:text="${errorCheck}" style="color: red;"></p>
+<label style="font-size: 23px;">Current address:</label>
+<input th:field="*{current_address}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorAddress}" th:text="${errorAddress}" style="color: red;"></p>
+<label style="font-size: 23px;">Home town:</label>
+<select th:field="*{Hometown}" style="width: 36%;
+margin:10px; font-size:21px;
+    height: 45px;"><br>
+    <option value=" "></option>
+	<option value="AP">Andhra Pradesh</option>
+	<option value="AR">Arunachal Pradesh</option>
+	<option value="AS">Assam</option>
+	<option value="BR">Bihar</option>
+	<option value="CT">Chhattisgarh</option>
+	<option value="GA">Gujarat</option>
+	<option value="HR">Haryana</option>
+	<option value="HP">Himachal Pradesh</option>
+	<option value="JK">Jammu and Kashmir</option>
+	<option value="GA">Goa</option>
+	<option value="JH">Jharkhand</option>
+	<option value="KA">Karnataka</option>
+	<option value="KL">Kerala</option>
+	<option value="MP">Madhya Pradesh</option>
+	<option value="MH">Maharashtra</option>
+    <option value="MN">Manipur</option>
+    <option value="ML">Meghalaya</option>
+	<option value="MZ">Mizoram</option>
+	<option value="NL">Nagaland</option>
+	<option value="OR">Odisha</option>
+	<option value="PB">Punjab</option>
+	<option value="RJ">Rajasthan</option>
+	<option value="SK">Sikkim</option>
+	<option value="TN">Tamil Nadu</option>
+	<option value="TG">Telangana</option>
+	<option value="TR">Tripura</option>
+	<option value="UT">Uttarakhand</option>
+	<option value="UP">Uttar Pradesh</option>
+	<option value="WB">West Bengal</option>
+	<option value="AN">Andaman and Nicobar Islands</option>
+	<option value="CH">Chandigarh</option>
+	<option value="DN">Dadra and Nagar Haveli</option>
+	<option value="DD">Daman and Diu</option>
+	<option value="DL">Delhi</option>
+	<option value="LD">Lakshadweep</option>
+	<option value="PY">Puducherry</option>
+</select>
+<p th:if="${errorTown}" th:text="${errorTown}" style="color: red;"></p>
+<br>
+<label style="font-size: 23px;">Adharcard:</label>
+<input th:field="*{adhaarcard}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorAdhar}" th:text="${errorAdhar}" style="color: red;"></p>
+<p th:if="${errorAdharExists}" th:text="${errorAdharExists}" style="color: red;"></p>
+<label style="font-size: 23px;">Gender:</label>
+<select th:field="*{gender}" style=" margin:10px; width: 36%;
+    height: 45px; font-size: 21px;" ><br>
+    <option value=""></option>
+<option th:value="'Male'" th:text="Male"></option>
+<option th:value="'Female'" th:text="Female"></option>
+</select>
+<p th:if="${errorEmail}" th:text="${errorEmail}" style="color: red;"></p>
+<br>
+<label style="font-size: 23px;" >Phone number:</label>
+<input th:field="*{phonenumber}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorPhone}" th:text="${errorPhone}" style="color: red;"></p>
+<p th:if="${errorPhoneLength}" th:text="${errorPhoneLength}" style="color: red;"></p>
+<p th:if="${errorPhoneBlank}" th:text="${errorPhoneLength}" style="color: red;"></p>
+<label style="width: 36%;
+margin:10px; font-size:21px;
+    height: 45px;">Joining Date:</label>
+<input th:field="*{joining_date}" type="date" style="    margin: 10px;
+    width: 24%;
+    font-size: 21px;">
+    <br>
+       <p th:if="${errorJdateAfter}" th:text="${errorJdateAfter}" style="color: red;"></p>
+        <p th:if="${errorParsing}" th:text="${errorParsing}" style="color: red;"></p>
+       
+<label style="font-size: 23px;">Emergency contact:</label>
+<input th:field="*{emergency_contact}" type="text" style="margin: 10px;"><br>
+<p th:if="${errorEcontact}" th:text="${errorEcontact}" style="color: red;"></p>
+<p th:if="${errorEcontactsame}" th:text="${errorEcontactsame}" style="color: red;"></p>
+<p th:if="${errorEcontactLength}" th:text="${errorEcontactLength}" style="color: red;"></p>
+<label style="font-size: 23px;">Department:</label>
+<select th:field="*{Department}" style=" margin:10px; width: 36%;
+    height: 45px; font-size: 21px;"><br>
+    <option value=""></option>  
+<option th:value="'DEFENCE'" th:text="DEFENCE"></option>
+<option th:value="'SOFTWARE'" th:text="SOFTWARE"></option>
+<option th:value="'GIS'" th:text="GIS"></option>
+<option th:value="'SATCOM'" th:text="SATCOM"></option>
+<option th:value="'ADMINISTRATION'" th:text="ADMINISTRATION"></option>
+</select><br>
+<p th:if="${errorDepartment}" th:text="${errorDepartment}" style="color: red;"></p>
+<label style="font-size: 23px;">Martial status:</label>
+<select th:field="*{martial_status}" style=" margin:10px; width: 36%;
+    height: 45px; font-size: 21px;"><br>
+<option value=""></option>    
+<option th:value="'Single'" th:text="Single"></option>
+<option th:value="'Married'" th:text="Married"></option>
+</select><br>
+<p th:if="${errorGender}" th:text="${errorGender}" style="color: red;"></p>
+<label style="font-size: 23px;">Blood group:</label>
+<select th:field="*{Bloodgroup}" style=" margin:10px; width: 36%;
+    height: 45px; font-size: 21px;"><br>
+<option value=""></option>    
+<option th:value="'AB+'" th:text="'AB+'"></option>
+<option th:value="'AB-'" th:text="'AB-'"></option>
+<option th:value="'B-'" th:text="'B-'"></option>
+<option th:value="'B+'" th:text="'B+'"></option>
+<option th:value="'A-'" th:text="'A-'"></option>
+<option th:value="'A+'" th:text="'A+'"></option>
+<option th:value="'0-'" th:text="'0-'"></option>
+<option th:value="'0+'" th:text="'0+'"></option>
+</select><br>
+<label style="font-size: 23px;" >DOB:</label>
+<input th:field="*{Dob}" type="date" style="    margin: 10px;
+    width: 24%;
+    font-size: 21px;"><br>
+    <p th:if="${errorParsingDOB}" th:text="${errorParsingDOB}" style="color: red;"></p>
+    <p th:if="${errorDobAfter}" th:text="${errorDobAfter}" style="color: red;"></p>
+    <p th:if="${errorDobBefore}" th:text="${errorDobBefore}" style="color: red;"></p>
+<label style="font-size: 23px;">Password:</label>
+<input th:field="*{password}" type="password" style="margin: 10px;"><br>
+<p th:if="${errorPassword}" th:text="${errorPassword}" style="color: red;"></p>
+<input type="submit" style="background-color: #3B71CA;
+    color: white;
+    border-radius: 10px;">Submit</button>
+</form>
+</div>
+</div>
+</body>
+</html>

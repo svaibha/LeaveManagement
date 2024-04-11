@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+<script type="text/javascript">
+function openform(){
+	document.getElementById("popupform").style.display="block";
+}
+function closeform(){
+	document.getElementById("popupform").style.display="none";
+}
+
+</script>
+</head>
+<body>
+<div class="sidebar" style="width: 13%;
+    height: 100%;
+    margin-bottom: 29px;
+    position: absolute;
+    top: 0px;
+    left: 0px;">
+<ul style="height: 100%; background-color: black;">
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a th:href="@{/dashboard}">Home</a></li>
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a th:href="@{/Managerdashboard/requests}">Requests</a></li>
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a th:href="@{/Managerdashboard/account}">Account</a></li>
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a href="/logout">Logout</a></li>   
+</ul>
+</div>
+<div id="Close">
+</div>
+
+<div class="container" style="position: absolute;left:19%;">
+<div class="card">
+<tbody>
+<table style="border-spacing: 57px;">
+<tr>
+<th style="
+    font-size: 30px;
+    width: 111px;" >To Date</th>
+<th style="    
+    font-size: 30px;
+    left: 139px;
+    width: 148px;">From Date</th>
+<th style=" 
+    font-size: 30px;
+    left: 344px;">Days</th>
+<th style="
+    font-size: 30px;
+    left: 478px;">Reason</th>
+<th style="
+    font-size: 30px;
+    width: 400px;
+    left: 608px;">Type of leave</th>
+<th style="
+    font-size: 30px;
+    width: 236px;
+    left: 608px;">Status</th>    
+<th style="
+    font-size: 30px;
+    left: 880px;">Action</th>
+<th></th>
+</tr>
+<tr th:each="leave : ${leave}">
+ <td th:text="${leave.To}" style="text-align: center; width: 330px;"/>
+ <td th:text = "${leave.From}" style="text-align: center;"/>
+ <td th:text = "${leave.no_of_days}"  style="text-align: center;"/>
+ <td th:text = "${leave.Reason}" style="text-align: center;"/>
+ <td th:text = "${leave.type_of_leave}" style="text-align: center;"/>
+ <td th:text = "${leave.Status}" style="text-align: center;"/>
+ <td><form th:action="@{/accept/{Id}(Id=${leave.Id})}" method="get">
+<input type="submit" value="Accept" style="width: 97px;
+    background-color: #3B71CA;
+    border: none;
+    color: white;
+    border-radius: 4px;">
+    </form></td>
+       
+ <td><form th:action="@{/deny/{Id}(Id=${leave.Id})}" method="get">
+ <input  type="submit" value="Deny" style="width: 102px;
+    background-color: #DC4C64;
+    color: white;
+    border: none;
+    border-radius: 4px;">
+ </form> </td>
+ </tr>
+ </table>
+</tbody>
+</div>
+</div>
+</body>
+</html>

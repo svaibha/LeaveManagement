@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<style>
+.row {
+  display: flex;
+}
+
+.container {
+  flex: 50%;
+  padding: 10px;
+  height: 690px;
+}
+</style>
+<body>
+
+<div class=row>
+<a href="/logout" style="font-size: 31px;position: absolute;left: 84%; background-color: black;color: WHITE;border-radius: 5px;
+    text-decoration: none;
+    width: 15%;
+    text-align: center;
+    height: 44px;">Logout</a>
+   <div class="container" style=" ">  
+   <form th:action="@{/Admindashboard/assign}" method="get" style="position: absolute;
+    left: 11%;
+    top: 35%;">
+   <button type="submit" style="    width: 378px;
+    height: 148px;
+    font-size: 42px;
+    background-color: black;
+    color: white;
+    border-radius: 14px;">Assign Manager</button>
+   </form>
+   <div class="Add users">
+   <form method="get" style="position: absolute;
+    left: 66%;
+    top: 35%;">
+   <button type="submit" style="    width: 378px;
+    height: 148px;
+    font-size: 42px;
+    background-color: black;
+    color: white;
+    border-radius: 14px;"></button>
+   </form>
+   </div>
+  </div>
+  <div class="container" style="border-left: 4px solid black;">
+  <form th:action="@{/Admindashboard/manager}" method="get" style="position: absolute;
+    left: 66%;
+    top: 35%;">
+   <button type="submit" style="    width: 378px;
+    height: 148px;
+    font-size: 42px;
+    background-color: black;
+    color: white;
+    border-radius: 14px;">Add  Manager</button>
+   </form>
+   
+   
+   
+  </div>
+  </div>
+
+</body>
+</html>

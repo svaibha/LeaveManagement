@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home page</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+       
+      	<div>
+          <table style="    border-spacing: 41px; position: absolute; left: 14%;">
+            <tr  style="font-size: 35px;">
+              <th>First name</th>
+              <th>Middle name  </th>
+              <th>Last name   </th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+            <tr th:each="employee : ${employees}">
+              <td th:text="${employee.first_name}"  style="font-size: 19px;" ></td>
+              <td th:text="${employee.middle_name}" style="font-size: 19px;"  ></td>
+              <td th:text="${employee.last_name}"   style="font-size: 19px;" ></td>
+              <td th:text="${employee.email}"   style="font-size: 19px;"></td>
+              <td th:text="${employee.Roles}"  style="font-weight: bolder;     font-size: 19px;"   ></td>
+              <td><a th:href="@{/Admindashboard/edit/{email}(email=${employee.email})}" class="btn btn-primary">UPDATE</a></td>
+            </tr>
+          <table>
+        </div>
+    </body>
+</html>

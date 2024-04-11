@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update details</title>
+</head>
+<body>
+<form action="#"  th:object="${employee}"  th:action="@{/Admindashboard/update/{email}(email=${employee.email})}" method="post" style=" float: left;
+    width: 50%;
+    border: 4px solid black;
+    border-radius: 24px;
+    margin-left: 342px;
+    margin-top: 5%">
+<label>First name:</label>
+<input th:field="*{first_name}" style=" width: 19%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px;" type="text">
+<label>Middle name:</label>
+<input th:field="*{middle_name}" style="   width: 17%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px;" type="text">
+<label style="margin-left: 48px;">Last name:</label>
+<input th:field="*{last_name}"  style="  width: 8%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px;
+    position: absolute; " type="text"><br>
+<label>Email:</label>
+<input th:field="*{email}"  style="    width: 37%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="text">
+<label>Adharcard:</label>
+<input th:field="*{adhaarcard}" style="    width: 20%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px;" type="text">
+<label>Gender:</label>
+<select th:field="*{gender}"  style="width: 11%;
+    /* height: 29%; */
+    font-size: 24px;">
+<option th:value="'Male'" th:text="Male"></option>
+<option th:value="'Female'" th:text="Female"></option>
+</select><br>
+<label>Phone number:</label>
+<input th:field="*{phonenumber}" style="    width:25%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="text"><br>
+<label>Joining Date:</label>
+<input th:field="*{joining_date}" style="    width: 19%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="date">
+<label>Emergency contact:</label>
+<input th:field="*{emergencycontact}" style="    width: 19%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="text"><br>
+<label>Current Address:</label>
+<input th:field="*{current_Address}" style="    width: 49%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="text"><br>
+<label>Department:</label>
+<input th:field="*{department}"  type="text" style="    width: 20%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px;"><br>
+<label>Martial status:</label>
+<select th:field="*{martial_status}" style="font-size: 22px;">
+<option th:value="'Single'" th:text="Single"></option>
+<option th:value="'Married'" th:text="Married"></option>
+</select>
+<label>Role:</label>
+<select th:field="*{Roles}" style="font-size: 22px;">
+<option th:value="'Employee'" th:text="Employee"></option>
+<option th:value="'Manager'" th:text="Manager"></option>
+</select>
+<label>DOB:</label>
+<input th:field="*{Dob}" type="date" style="    width: 22%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px"><br>
+<label>Blood group:</label>
+<input th:field="*{Bloodgroup}" style="    width: 12%;
+    margin-bottom: 14px;
+    height: 37px;
+    font-size: 21px" type="text"><br>
+
+<input type="submit" style="
+    width: 65%;
+    height: 35px;
+    margin-left: 154px;
+    font-size: 28px;
+    background-color: #3B71CA;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    margin-bottom: 10px;">
+</form>
+
+</body>
+</html>

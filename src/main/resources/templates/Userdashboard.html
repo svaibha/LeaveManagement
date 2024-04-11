@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Dashboard</title>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+<script type="text/javascript">
+function openform(){
+	document.getElementById("popupform").style.display="block";
+}
+function closeform(){
+	document.getElementById("popupform").style.display="none";
+}
+
+</script>
+</head>
+<body>
+<div class="sidebar" style="width: 13%;
+    height: 100%;
+    margin-bottom: 29px;
+    position: absolute;
+    top: 0px;
+    left: 0px;">
+<ul style="height: 100%; background-color: black;">
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a href="/dashboard">Home</a></li>
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a href="/Userdashboard/account">Account</a></li>
+<li style="color:white; height: 68px;
+    font-size: 40px;"><a href="/logout">Logout</a></li>    
+</ul>
+</div>
+
+<div class="container">
+
+<div class="card">
+<div class="total_leaves" style=" 
+    position: absolute;
+    top: 10%;
+    left: 16%;
+    border: 2px solid black;
+    width: 10%;
+    height: 73px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 21px;">
+    <span style="font-size: 23px;
+    position: absolute;
+    left: 11px;
+    top: 15px;"> Total leaves:</span>
+<span style="
+            top: 40px;
+    position: absolute;
+    left: 52px;
+    font-size: 29px;
+    font-weight: bolder;" th:text="${total_leaves.total_leaves}"></span>
+</div>
+<div class="leaves_taken" style=" 
+    position: absolute;
+    top: 10%;
+    left: 33%;
+    border: 2px solid black;
+    width: 10%;
+    height: 73px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 21px;">
+<span style="font-size: 22px;
+    position: absolute;
+    left: 18px;
+    top: 17px ">Leaves taken:</span>
+<span style="
+             top: 39px;
+    position: absolute;
+    left: 57px;
+    font-size: 29px;
+    font-weight: bolder;" th:text="${total_leaves.leaves_taken}"></span>
+</div>
+<div class="leaves_available" style=" 
+    position: absolute;
+    top: 10%;
+    left: 54%;
+    border: 2px solid black;
+    width: 10%;
+    height: 73px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 21px;">
+<span style="    font-size: 19px;
+    position: absolute;
+    left: 14px;
+    top: 14px;">Leaves available:</span>
+<span style="
+         top: 40px;
+    position: absolute;
+    left: 56px;
+    font-size: 29px;
+    font-weight: bolder;" th:text="${total_leaves.Remaining_leaves}"></span>
+</div>
+<div class="leaves_applied" style=" 
+    position: absolute;
+    top: 10%;
+    left: 74%;
+    border: 2px solid black;
+    width: 10%;
+    height: 73px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 21px;">
+<span style="font-size: 22px;
+    position: absolute;
+    left: 8px;
+    top: 11px ">Leaves Applied:</span>
+<span style="
+             top: 39px;
+    position: absolute;
+    left: 57px;
+    font-size: 29px;
+    font-weight: bolder;" th:text="${total_leaves.leave_applied}"></span>
+    </div>
+<div class="form-button" style="position: absolute;top:30%;left:14%;">
+<div class="form-popup" id= "popupform" style="display: block; border-top:4px solid black;">
+<form action="#" th:action="@{/apply}" th:object="${leave}"  method="post" style="    width: 83%;
+    height: 300px;
+    padding: 59px;
+    border-right: 4px solid black;
+    margin-top: 11px;">
+<label style="font-size: 25px;">To Date:</label>
+<input th:field="*{To}" type="date" style="width: 45%;
+    margin-bottom: 20px;
+    height: 45px;
+    font-size: 25px;"><br>
+<label style="font-size: 25px;">From Date:</label>
+<input th:field="*{From}" type="date" style="width: 45%;
+    margin-bottom: 20px;
+    height: 45px;
+    font-size: 25px;"><br>
+<label style="font-size: 25px;">No of days:</label>
+<input th:field="*{no_of_days}" type="text" style="width: 45%;
+    margin-bottom: 20px;
+    height: 45px;
+    font-size: 25px;"><br>
+<label style="font-size: 25px;">type of leave:</label>
+    <select th:field="*{type_of_leave}" text="text" style="width: 60%;
+    margin-bottom: 20px;
+    height: 35px;
+    font-size: 25px;"><br>
+<option th:value="'SICK'" th:text="Sick"></option>
+    <span th:if="${user.gender == 'Female'}">
+<option th:value="'MATERNITY'" th:text="Maternity"></option>
+</span>
+<span th:if="${user.martial_status =='Married'}">
+<option th:value="'PATERNITY'" th:text="Paternity"></option>
+</span>
+<option th:value="'CASUAL'" th:text="Casual"></option>
+<option th:value="'EMERGENCY'" th:text="Emergency"></option>
+</select><br>
+<label style="font-size: 25px;">Reason:</label>
+<input th:field="*{Reason}" type="text" style="width: 60%;
+    margin-bottom: 20px;
+    height: 35px;
+    font-size: 25px;"><br>
+<input type="submit" style="width: 200px; background-color:24a0ed; height: 30px;">
+</form>
+</div>
+</div>
+<div class="status" style="     position: absolute;
+    left: 54%;
+    top: 30%;
+    width: 10%;
+    border-top: 4px solid black
+    ">
+          <table style="width:570px; margin-top: 26px;">
+            <tr>
+              <th style="font-size: 25px;">To</th>
+              <th style="font-size: 25px;">From</th>
+              <th  style="font-size: 25px;">Days</th>
+              <th style="font-size: 25px;">Status</th>
+            </tr>
+            <tbody>
+            <tr th:each="leaveapplieds : ${leaveapplied}" > 
+              <td style="text-align: center;" th:text="${leaveapplieds.To}" ></td>
+              <td style="text-align: center;" th:text="${leaveapplieds.From}"></td>
+              <td style="text-align: center;" th:text="${leaveapplieds.no_of_days}"></td>
+              <td style="text-align: center;" th:text="${leaveapplieds.Status}" ></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        
+
+</div>
+</div>
+</div>
+</body>
+</html>

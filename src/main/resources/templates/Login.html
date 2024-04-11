@@ -1,0 +1,45 @@
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div class="heading" style="position: absolute;top:24%;left:38%;"> 
+      <h1 style="font-size: 32px;font-weight:500;"> Login</h1>
+      </div>
+   <div class="container" style="width: 55%;
+    position: absolute;
+    left: 38%;
+    top: 36%;">  
+    <div class="login_msg_box" th:if="${invalidsession != null}" style="color: red;">
+    <p th:text="${invalidsession}">
+    </div>
+    <div class="already_login_msg" th:if="${expiredSession != null}" style="color: red;">
+    <p th:text="${expiredSession}">
+    </div>
+    <div class="alreadylogin" th:if="${loginlalready != null}">
+    <p th:text="${loginlalready}">
+    </div>
+      <div class="card" style="width: 56%;">
+    <form th:action="@{/login}" action="#" method="post">
+      <table>
+         <tr>
+            <td style="font-size:15px; font-weight: 200; font-style: oblique;">Email:</td>
+            <td><input type='text' name='username' value='' style="width: 110%;height: 32px;"></td>
+         </tr>
+         <tr>
+            <td style="font-size:15px; font-weight: 200;font-style:oblique;">Password:</td>
+            <td><input type='password' name='password' id='password' style="width: 110%;height: 32px;" /></td>
+         </tr>
+         <tr>
+            <td><input name="submit" type="submit" value="submit" style="background-color:#3B71CA; border:none; border-radius:5px; width:80%; color:white;" /></td>
+         </tr>
+      </table>
+  </form>
+  <div class="checkbox" style="position: absolute;left: 32%;top: 45%;">
+         <input type="checkbox" onclick="showPassword()">Show Password
+         </div>
+  </div>
+  </div>
+  
+</body>
+</html>
